@@ -7,8 +7,11 @@ import com.crud.tasks.service.DbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.function.EntityResponse;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -20,35 +23,44 @@ import java.util.List;
 @RequestMapping("/v1/tasks") //generowanie adresu do API
 public class TaskController {
 
-
     private final DbService service;
-
     private final TaskMapper taskMapper;
-
 
     //@RequestMapping(method = RequestMethod.GET,value = "") =  @GetMapping
     @GetMapping
-    public List<TaskDto> getTasks() {
+    public ResponseEntity<List<TaskDto>> getTasks() {
         List<Task> tasks = service.getAllTasks();
-        return taskMapper.mapToTaskDtoList(tasks);
+        return ResponseEntity.ok(taskMapper.mapToTaskDtoList(tasks));
     }
-    @GetMapping(value = "{taskId}")
-    TaskDto getTask (@PathVariable Long taskId) {
-        return new TaskDto(1L,"test title","test_content");
-    }
-    @DeleteMapping("{taskId}")
-    public void deleteTask(@PathVariable Long taskId) {
 
+    @GetMapping(value = "{taskId}")
+    public ResponseEntity<TaskDto> getTask(@PathVariable Long taskId) throws TaskNotFoundException {
+        // try {
+        // return new ResponseEntity<>(taskMapper.mapToTaskDto(service.getTask(taskId)), HttpStatus.OK);
+        //} catch (TaskNotFoundException e) {
+        // return new ResponseEntity<>(new TaskDto(0L, "No task with id =" + taskId, ""), HttpStatus.BAD_REQUEST);
+        //}
+        return ResponseEntity.ok(taskMapper.mapToTaskDto(service.getTask(taskId)));
     }
+
+    @DeleteMapping("{taskId}")
+    public ResponseEntity<Void> deleteTask(@PathVariable Long taskId) {
+        service.deleteTask(taskId);
+        return ResponseEntity.ok().build();
+    }
+
     @PutMapping
-    public TaskDto updateTask(TaskDto taskDto) {
-        return new TaskDto(1L, "Edited test title", "Test_content");
+    public ResponseEntity<TaskDto> updateTask(@RequestBody TaskDto taskDto) {
+        Task task = taskMapper.mapToTask(taskDto);
+        Task saveTask = service.saveTask(task);
+        return ResponseEntity.ok(taskMapper.mapToTaskDto(saveTask));
     }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void createTask(@RequestBody TaskDto taskDto) {
+    public ResponseEntity<Void> createTask(@RequestBody TaskDto taskDto) {
         Task task = taskMapper.mapToTask(taskDto);
         service.saveTask(task);
-        }
-
+        return ResponseEntity.ok().build();
     }
+}
 

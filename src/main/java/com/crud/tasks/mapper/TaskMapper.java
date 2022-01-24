@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 @Service
 public class TaskMapper {
 
@@ -16,16 +17,18 @@ public class TaskMapper {
                 taskDto.getContent()
         );
     }
-        public TaskDto mapToTaskDto(final Task task) {
-            return new TaskDto(
-                    task.getId(),
-                    task.getTitle(),
-                    task.getContent()
-            );
-                }
-                public List<TaskDto> mapToTaskDtoList(final List<Task> taskList) {
+
+    public TaskDto mapToTaskDto(final Task task) {
+        return new TaskDto(
+                task.getId(),
+                task.getTitle(),
+                task.getContent()
+        );
+    }
+
+    public List<TaskDto> mapToTaskDtoList(final List<Task> taskList) {
         return taskList.stream()
-                .map(this::mapToTaskDto)
+                .map(t -> new TaskDto(t.getId(), t.getTitle(), t.getContent()))
                 .collect(Collectors.toList());
     }
 }
