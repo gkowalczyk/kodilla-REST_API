@@ -9,9 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 1. Klasa DbServive odpowiada za komunikację z bazą danych "tasks_crud".
 Klasa ta wstrzykuje do siebie klasę TaskRepository (zawiera interfejs rozrzerzony o
-CrudRepository - znajdujący się w bibliotekach sprongframework)
+CrudRepository - znajdujący się w bibliotekach sprongframework) przy pomocy adnotacji @Autowired
 
- przy pomocy adnotacji @Autowired
 2. Klasa TaskMapper mapuje typ Task na TaskDto oraz odwrotnie
 
 3. W klasie TaskController dokonujemy wstrzyknięcia klas DbService oraz TaskMapper
