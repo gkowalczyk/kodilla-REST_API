@@ -3,6 +3,8 @@ package com.crud.tasks;
 import com.crud.tasks.domain.TaskDto;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 
 /*Aplikacja  "TASKS" -  odczyt  zadań z bazy danych o konkretnej encji ID
@@ -22,9 +24,10 @@ CrudRepository - znajdujący się w bibliotekach sprongframework) przy pomocy ad
  - PUT (UPDATE DANYCH NA SERWERZE)
  */
 @SpringBootApplication
-public class TasksApplication {
+public class TasksApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
+		SpringApplication.run(TasksApplication.class,args);
 		//TaskDto taskDto = new TaskDto(
 			//	(long)1,
 				//"Test title",
@@ -35,6 +38,10 @@ public class TasksApplication {
 		//String title = taskDto.getTitle();
 		//String content = taskDto.getContent();
 		//System.out.println(id + " " + title + " " + content);
-		SpringApplication.run(TasksApplication.class, args);
+
+	}
+	@Override
+protected SpringApplicationBuilder configure(SpringApplicationBuilder application){
+		return application.sources(TasksApplication.class);
 	}
 }

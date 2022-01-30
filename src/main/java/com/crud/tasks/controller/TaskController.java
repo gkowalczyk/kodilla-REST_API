@@ -17,7 +17,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+@CrossOrigin("*")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/v1/tasks") //generowanie adresu do API
@@ -26,13 +26,12 @@ public class TaskController {
     private final DbService service;
     private final TaskMapper taskMapper;
 
-    //@RequestMapping(method = RequestMethod.GET,value = "") =  @GetMapping
+   // @RequestMapping(method = RequestMethod.GET,value = "getTask") //=  @GetMapping
     @GetMapping
     public ResponseEntity<List<TaskDto>> getTasks() {
         List<Task> tasks = service.getAllTasks();
         return ResponseEntity.ok(taskMapper.mapToTaskDtoList(tasks));
     }
-
     @GetMapping(value = "{taskId}")
     public ResponseEntity<TaskDto> getTask(@PathVariable Long taskId) throws TaskNotFoundException {
         // try {

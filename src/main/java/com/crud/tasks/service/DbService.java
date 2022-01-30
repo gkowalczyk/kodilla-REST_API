@@ -14,8 +14,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class DbService {
-    @Autowired
     private final TaskRepository repository;
+
 
 //public DbService(TaskRepository repository) {
     //  this.repository = repository;
