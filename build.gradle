@@ -2,7 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.8'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id 'war'
+	//id 'war'
 
 }
 
@@ -12,6 +12,9 @@ sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
+}
+jar {
+	enabled = false
 }
 
 dependencies {
@@ -25,7 +28,9 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok:1.18.22'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 	runtimeOnly 'mysql:mysql-connector-java'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.3.1'
+
 }
 test {
 	useJUnitPlatform()

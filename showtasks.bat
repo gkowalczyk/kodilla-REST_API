@@ -1,6 +1,9 @@
 call runcrud.bat
 if "%ERRORLEVEL%" == "0" goto chrome
 echo.
+echo.
+echo.
+echo.
 echo There were problems with running script.
 goto fail
 
