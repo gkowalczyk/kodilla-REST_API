@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class CoreConfiguration {
 
-    @Bean
+    @Bean //RestTemplate jest to klasa dostarczana przez Springa, która umożliwia realizowanie żądań HTTP pomiędzy serwerami.
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
