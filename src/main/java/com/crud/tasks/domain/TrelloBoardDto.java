@@ -7,10 +7,9 @@ import lombok.*;
 import java.util.List;
 
 //@Data
-@Setter
-@Getter
 @AllArgsConstructor
-@NoArgsConstructor
+@EqualsAndHashCode
+@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TrelloBoardDto {
 
