@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @RequestMapping("v1/trello")
 @RequiredArgsConstructor
 @CrossOrigin("*")
-public class TrelloController {
+public class TrelloController { // testowanie implementacji
 
     private final TrelloClient trelloClient;
 

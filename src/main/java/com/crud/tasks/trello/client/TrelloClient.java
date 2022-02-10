@@ -7,6 +7,7 @@ import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloBudgetDto;
 import com.crud.tasks.domain.TrelloCardDto;
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,6 +24,7 @@ import static java.util.Optional.ofNullable;
 
 @Component//
 @RequiredArgsConstructor
+@EqualsAndHashCode
 public class TrelloClient { //
 
     private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(TrelloClient.class);
@@ -68,11 +70,11 @@ public class TrelloClient { //
         // return new ArrayList<>();
         return ofNullable(boardsResponse)
                 .map(Arrays::asList)
-                .orElse(Collections.emptyList())
-                .stream()
-                .filter(p -> Objects.nonNull(p.getId()) && Objects.nonNull(p.getName()))
+                .orElse(Collections.emptyList());
+                //.stream()
+               // .filter(p -> Objects.nonNull(p.getId()) && Objects.nonNull(p.getName()))
                // .filter(p -> p.getName().contains("Kodilla"))
-                .collect(Collectors.toList());
+               // .collect(Collectors.toList());
     } catch(
     RestClientException e)
 

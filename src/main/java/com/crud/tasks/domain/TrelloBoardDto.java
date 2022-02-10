@@ -11,7 +11,7 @@ import java.util.List;
 @EqualsAndHashCode
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TrelloBoardDto {
+public class TrelloBoardDto { //odpowiedź z serwera na obiekt java z metody getObject klasy Resttemplate
 
     @JsonProperty("id")
     private String id;
