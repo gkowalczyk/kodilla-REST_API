@@ -8,6 +8,7 @@ import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloBudgetDto;
 import com.crud.tasks.domain.TrelloCardDto;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +26,7 @@ import static java.util.Optional.ofNullable;
 @Component//
 @RequiredArgsConstructor
 @EqualsAndHashCode
+
 public class TrelloClient { //
 
     private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(TrelloClient.class);

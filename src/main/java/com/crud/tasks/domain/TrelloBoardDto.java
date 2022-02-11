@@ -9,6 +9,7 @@ import java.util.List;
 //@Data
 @AllArgsConstructor
 @EqualsAndHashCode
+@NoArgsConstructor
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TrelloBoardDto { //odpowiedź z serwera na obiekt java z metody getObject klasy Resttemplate
