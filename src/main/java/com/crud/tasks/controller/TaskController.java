@@ -26,8 +26,8 @@ public class TaskController {
     private final DbService service;
     private final TaskMapper taskMapper;
 
-   // @RequestMapping(method = RequestMethod.GET,value = "getTask") //=  @GetMapping
-    @GetMapping
+    @RequestMapping(method = RequestMethod.GET,value = "getTask") //=  @GetMapping
+   // @GetMapping
     public ResponseEntity<List<TaskDto>> getTasks() {
         List<Task> tasks = service.getAllTasks();
         return ResponseEntity.ok(taskMapper.mapToTaskDtoList(tasks));
