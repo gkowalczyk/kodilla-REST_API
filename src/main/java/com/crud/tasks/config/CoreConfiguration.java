@@ -27,7 +27,7 @@ public class CoreConfiguration {
     public Docket api() {
        return new Docket(DocumentationType.SWAGGER_2)
                .select()
-                .apis(RequestHandlerSelectors.any())// metody które mają być przeszukane w celu znalezienia controllerów
+                .apis(RequestHandlerSelectors.basePackage("com.crud.tasks.controller"))// metody które mają być przeszukane w celu znalezienia controllerów
                 .paths(PathSelectors.any())
                 .build();
 
