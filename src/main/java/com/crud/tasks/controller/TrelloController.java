@@ -3,6 +3,7 @@ package com.crud.tasks.controller;
 import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
+import com.crud.tasks.service.TrelloService;
 import com.crud.tasks.trello.client.TrelloClient;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +20,12 @@ import java.util.stream.Collectors;
 @CrossOrigin("*")
 public class TrelloController { // testowanie implementacji
 
-    private final TrelloClient trelloClient;
+    //private final TrelloClient trelloClient;
+    private final TrelloService trelloService;
 
     @GetMapping("boards")
     public ResponseEntity<List<TrelloBoardDto>>getTrelloBoards() {
-       return ResponseEntity.ok(trelloClient.getTrelloBoards());   //.stream()
+       return ResponseEntity.ok(trelloService.fetchTrelloBoards());   //.stream()
               //  .filter(trelloClient -> trelloClient.getName().equals("Kodilla-application"))
                 //.collect(Collectors.toList());
 
@@ -37,7 +39,7 @@ public class TrelloController { // testowanie implementacji
     }
     @PostMapping("cards")
     public ResponseEntity<CreatedTrelloCard>  createdTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
-        return ResponseEntity.ok(trelloClient.createNewCard(trelloCardDto));
+        return ResponseEntity.ok(trelloService.createdTrelloCard(trelloCardDto));
     }
 }
 
