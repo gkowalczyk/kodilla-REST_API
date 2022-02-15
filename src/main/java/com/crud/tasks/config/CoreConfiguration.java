@@ -13,6 +13,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+@EnableScheduling
 @EnableSwagger2
 @Configuration //klasa w której będzie konfiguracja beanów albo projektu lub struktur
 public class CoreConfiguration {
