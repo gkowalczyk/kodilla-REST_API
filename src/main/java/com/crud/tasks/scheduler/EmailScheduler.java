@@ -21,20 +21,15 @@ public class EmailScheduler {
     private final AdminConfig adminConfig;
     private final TrelloClient trelloClient;
 
+
     //@Scheduled(fixedDelay = 10000)
-    @Scheduled(cron = "0 0 10 * * *")
+    //@Scheduled(cron = "0 0 10 * * *")
     public void sendInformationEmail() {
         long size = taskRepository.count();
 
-        String message = "";
-        Mail mail = new Mail(adminConfig.getAdminMail(), SUBJECT, message, "");
-
-        if (size > 1) {
-            mail.setMessage("Currently in database you got: " + size + " tasks");
-        } else {
-            mail.setMessage("Currently in database you got: " + size + " task");
-        }
-        simpleEmailService.send(mail);
+       String message = " message" +((size > 1L)? "tasks": "task");
+       Mail mail = new Mail(adminConfig.getAdminMail(), SUBJECT, message,"");
+       simpleEmailService.send(mail);
     }
 }
 
