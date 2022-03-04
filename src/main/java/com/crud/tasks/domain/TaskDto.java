@@ -13,3 +13,9 @@ public class TaskDto {
     private String title;
     private String content;
 }
+//DTO są to obiekty transferujące, które odpowiadają za
+// przekazywanie danych pomiędzy serwerami. Obiekt DTO
+// jest miejscem, w którym gromadzimy wejściowe dane do
+// aplikacji (trafiające do Controllera), bądź dane,
+// które opuszczają naszą aplikację (są zwracane przez
+// Controller).

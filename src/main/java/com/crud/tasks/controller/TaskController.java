@@ -1,4 +1,13 @@
 package com.crud.tasks.controller;
+//Controller jest częścią aplikacji webowej,
+// która odpowiada za otrzymywanie żądań i
+// zwracanie odpowiedzi. Wewnątrz controllera
+// wywoływane są metody klas implementujących
+// logikę biznesową. W samym controllerze nie
+// implementujemy więc logiki biznesowej, a
+// jedynie delegujemy
+// to zadanie do innych klas.
+
 
 import com.crud.tasks.domain.Task;
 import com.crud.tasks.domain.TaskDto;
@@ -18,13 +27,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 @CrossOrigin("*")
-@RequiredArgsConstructor
-@RestController
+//@RequiredArgsConstructor
+@RestController//wystawienie klasy na zewnątrz
 @RequestMapping("/v1/tasks") //generowanie adresu do API
 public class TaskController {
 
+
     private final DbService service;
+
     private final TaskMapper taskMapper;
+
+    @Autowired
+    public TaskController(DbService service, TaskMapper taskMapper) {
+        this.service = service;
+        this.taskMapper = taskMapper;
+    }
+
 
     //@RequestMapping(method = RequestMethod.GET,value = "getTask") //=  @GetMapping
     @GetMapping

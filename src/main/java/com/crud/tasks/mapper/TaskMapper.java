@@ -32,3 +32,6 @@ public class TaskMapper {
                 .collect(Collectors.toList());
     }
 }
+//przełożenie obiektów DTO na obiekty domenowe, czyli takie,
+
+   // którymi posługujemy się wewnątrz naszej aplikacji.

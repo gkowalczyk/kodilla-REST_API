@@ -25,6 +25,16 @@ CrudRepository - znajdujący się w bibliotekach sprongframework) przy pomocy ad
  - PUT (UPDATE DANYCH NA SERWERZE)
  */
 
+//Obiekty domenowe są nieodłączną częścią aplikacji.
+// Są obiektami, które przenoszą informacje wewnątrz
+// aplikacji oraz pełnią funkcję deskrypcyjną, czyli
+// opisują, na danych jakiego rodzaju operujemy w
+// danym momencie w kodzie. Nazwy obiektów
+// domenowych powinny spełniać założenia czystego kodu,
+// dlatego należy wyzbyć się końcówek typu
+// -Data, czy -Information.
+//
+//DTO również są częścią obiektów domenowych.
 @SpringBootApplication
 
 //public class TasksApplication extends SpringBootServletInitializer {
