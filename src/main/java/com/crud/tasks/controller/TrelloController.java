@@ -1,17 +1,15 @@
 package com.crud.tasks.controller;
 
-import com.crud.tasks.domain.CreatedTrelloCard;
+import com.crud.tasks.domain.CreatedTrelloCardDto;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.service.TrelloService;
-import com.crud.tasks.trello.client.TrelloClient;
-import lombok.NoArgsConstructor;
+import com.crud.tasks.trello.facade.TrelloFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("v1/trello/")
@@ -22,10 +20,12 @@ public class TrelloController { // testowanie implementacji
 
     //private final TrelloClient trelloClient;
     private final TrelloService trelloService;
+    private final TrelloFacade trelloFacade;
 
     @GetMapping("boards")
     public ResponseEntity<List<TrelloBoardDto>>getTrelloBoards() {
-       return ResponseEntity.ok(trelloService.fetchTrelloBoards());   //.stream()
+         return ResponseEntity.ok(trelloFacade.fetchTrelloBoards());   //.stream()
+      // return ResponseEntity.ok(trelloService.fetchTrelloBoards());   //.stream()
               //  .filter(trelloClient -> trelloClient.getName().equals("Kodilla-application"))
                 //.collect(Collectors.toList());
 
@@ -38,8 +38,9 @@ public class TrelloController { // testowanie implementacji
        // });
     }
     @PostMapping("cards")
-    public ResponseEntity<CreatedTrelloCard>  createdTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
-        return ResponseEntity.ok(trelloService.createdTrelloCard(trelloCardDto));
+    public ResponseEntity<CreatedTrelloCardDto>  createdTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
+        return ResponseEntity.ok(trelloFacade.createdTrelloCard(trelloCardDto));
+       // return ResponseEntity.ok(trelloService.createdTrelloCard(trelloCardDto));
     }
 }
 
