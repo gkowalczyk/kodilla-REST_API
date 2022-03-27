@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -46,6 +48,7 @@ public class MapperTestSuite {
         System.out.println(trelloBoardDtoList.get(0).getId());
         //Then
         assertEquals(trelloBoardAfterMapping.get(0).getId(), trelloBoardDtoList.get(0).getId());
+        assertThat(trelloBoardDtoList).isNotNull();
     }
 
     @Test
@@ -61,6 +64,7 @@ public class MapperTestSuite {
         System.out.println(trelloBoardList.get(0).getId());
         //Then
         assertEquals(trelloBoardDtoAfterMapping.get(0).getId(), trelloBoardList.get(0).getId());
+        assertThat(trelloBoardList).isNotNull();
     }
 
     @Test
@@ -74,6 +78,7 @@ public class MapperTestSuite {
         System.out.println(trelloListList.get(0).getName());
         //Then
         assertEquals(trelloListDtoAfterMapping.get(0).getName(), trelloListList.get(0).getName());
+        assertThat(trelloListList).isNotNull();
     }
 
     @Test
@@ -87,6 +92,7 @@ public class MapperTestSuite {
         System.out.println(trelloListListDto.get(0).getName());
         //Then
         assertEquals(trelloListDtoAfterMapping.get(0).getName(), trelloListListDto.get(0).getName());
+        assertThat(trelloListListDto).isNotNull();
     }
 
     @Test
@@ -97,6 +103,7 @@ public class MapperTestSuite {
         System.out.println(trelloCardDto.getDescription());
         System.out.println(trelloCard.getDescription());
         assertEquals(trelloCardDto.getDescription(), trelloCard.getDescription());
+        assertThat(trelloCard).isNotNull();
     }
 
     @Test
@@ -107,5 +114,6 @@ public class MapperTestSuite {
         System.out.println(trelloCardDto.getListId());
         System.out.println(trelloCard.getListId());
         assertEquals(trelloCardDto.getListId(), trelloCard.getListId());
+        assertThat(trelloCardDto).isNotNull();
     }
 }
