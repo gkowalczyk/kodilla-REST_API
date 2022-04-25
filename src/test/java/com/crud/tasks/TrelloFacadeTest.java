@@ -41,11 +41,11 @@ public class TrelloFacadeTest {
     void shouldFetchEmptyList() {
 
         // Given
-        List<TrelloListDto> trelloLists =
+        List<TrelloListDto> trelloListsDto =
                 List.of(new TrelloListDto("1", "test_list", true));
 
-        List<TrelloBoardDto> trelloBoards =
-                List.of(new TrelloBoardDto("1", "test1", trelloLists));
+        List<TrelloBoardDto> trelloBoardsDto =
+                List.of(new TrelloBoardDto("1", "test1", trelloListsDto));
 
         List<TrelloList> mappedTrelloLists =
                 List.of(new TrelloList("1", "test_list", true));
@@ -53,19 +53,19 @@ public class TrelloFacadeTest {
         List<TrelloBoard> mappedTrelloBoards =
                 List.of(new TrelloBoard("1", "test1", mappedTrelloLists));
 
-        when(trelloService.fetchTrelloBoards()).thenReturn(trelloBoards);
-        System.out.println(trelloBoards.get(0).getName());
-        when(trelloMapper.mapToBoard(trelloBoards)).thenReturn(mappedTrelloBoards);
-        System.out.println(trelloBoards.get(0).getName());
-        System.out.println(mappedTrelloBoards.get(0).getName());
+        when(trelloService.fetchTrelloBoards()).thenReturn(trelloBoardsDto);
+       // System.out.println(trelloBoards.get(0).getName());
+        when(trelloMapper.mapToBoard(trelloBoardsDto)).thenReturn(mappedTrelloBoards);
+        //System.out.println(trelloBoards.get(0).getName());
+       // System.out.println(mappedTrelloBoards.get(0).getName());
         when(trelloMapper.mapToBoardDto(anyList())).thenReturn(List.of());//list.of zwracamy pustą listę
-        System.out.println(anyList());
-        System.out.println(List.of());
+        //System.out.println(anyList());
+        //System.out.println(List.of());
         when(trelloValidator.validateTrelloBoards(mappedTrelloBoards)).thenReturn(List.of());
-        System.out.println(mappedTrelloBoards.get(0).getLists());
+        //System.out.println(mappedTrelloBoards.get(0).getLists());
 
         List<TrelloBoardDto> trelloBoardDtos = trelloFacade.fetchTrelloBoards();
-        System.out.println(trelloBoardDtos.size());
+        //System.out.println(trelloBoardDtos.size());
 
         assertThat(trelloBoardDtos).isNotNull();
         assertThat(trelloBoardDtos.size()).isEqualTo(0);
@@ -73,11 +73,11 @@ public class TrelloFacadeTest {
     }
     @Test
     void shouldFetchTrelloBoards() {
-        List<TrelloListDto> trelloLists =
+        List<TrelloListDto> trelloListsDto =
                 List.of(new TrelloListDto("1", "test_list", false));
 
-        List<TrelloBoardDto> trelloBoards =
-                List.of(new TrelloBoardDto("1", "test", trelloLists));
+        List<TrelloBoardDto> trelloBoardsDto =
+                List.of(new TrelloBoardDto("1", "test", trelloListsDto));
 
         List<TrelloList> mappedTrelloLists =
                 List.of(new TrelloList("1", "test_list", false));
@@ -85,9 +85,9 @@ public class TrelloFacadeTest {
         List<TrelloBoard> mappedTrelloBoards =
                 List.of(new TrelloBoard("1", "test", mappedTrelloLists));
 
-        when(trelloService.fetchTrelloBoards()).thenReturn(trelloBoards);
-        when(trelloMapper.mapToBoard(trelloBoards)).thenReturn(mappedTrelloBoards);
-        when(trelloMapper.mapToBoardDto(anyList())).thenReturn(trelloBoards);
+        when(trelloService.fetchTrelloBoards()).thenReturn(trelloBoardsDto);
+        when(trelloMapper.mapToBoard(trelloBoardsDto)).thenReturn(mappedTrelloBoards);
+        when(trelloMapper.mapToBoardDto(anyList())).thenReturn(trelloBoardsDto);
         when(trelloValidator.validateTrelloBoards(mappedTrelloBoards)).thenReturn(mappedTrelloBoards);
 
         List<TrelloBoardDto> trelloBoardDtos = trelloFacade.fetchTrelloBoards();

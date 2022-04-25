@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -26,13 +25,14 @@ public class TrelloFacade {
         List<TrelloBoard> trelloBoards = trelloMapper.mapToBoard(trelloService.fetchTrelloBoards());
         List<TrelloBoard> filteredBoards = trelloValidator.validateTrelloBoards(trelloBoards);
         return trelloMapper.mapToBoardDto(filteredBoards);
-       // return trelloBoards.stream()
-              //  .map(trelloBoardDto -> trelloMapper.mapToBoard(trelloBoardDto))
-             //   .collect(Collectors.toList());
-        }
-        public CreatedTrelloCardDto createdTrelloCard(final TrelloCardDto trelloCardDto) {
-            TrelloCard trelloCard = trelloMapper.mapToCard(trelloCardDto);
-            trelloValidator.validateCard(trelloCard);
-            return trelloService.createdTrelloCard(trelloMapper.mapToCardDto(trelloCard));
+        // return trelloBoards.stream()
+        //  .map(trelloBoardDto -> trelloMapper.mapToBoard(trelloBoardDto))
+        //   .collect(Collectors.toList());
     }
+
+    public CreatedTrelloCardDto createdTrelloCard(final TrelloCardDto trelloCardDto) {
+        TrelloCard trelloCard = trelloMapper.mapToCard(trelloCardDto);
+        trelloValidator.validateCard(trelloCard);
+        return trelloService.createdTrelloCard(trelloMapper.mapToCardDto(trelloCard));
     }
+}

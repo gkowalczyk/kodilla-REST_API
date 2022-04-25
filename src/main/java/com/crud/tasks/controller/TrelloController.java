@@ -6,10 +6,12 @@ import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.service.TrelloService;
 import com.crud.tasks.trello.facade.TrelloFacade;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @RestController
 @RequestMapping("v1/trello/")
@@ -19,7 +21,8 @@ import java.util.List;
 public class TrelloController { // testowanie implementacji
 
     //private final TrelloClient trelloClient;
-    private final TrelloService trelloService;
+    //private final TrelloService trelloService;
+    @Autowired
     private final TrelloFacade trelloFacade;
 
     @GetMapping("boards")

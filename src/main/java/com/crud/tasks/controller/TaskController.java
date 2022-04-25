@@ -8,23 +8,16 @@ package com.crud.tasks.controller;
 // jedynie delegujemy
 // to zadanie do innych klas.
 
-
 import com.crud.tasks.domain.Task;
 import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.mapper.TaskMapper;
 import com.crud.tasks.service.DbService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.function.EntityResponse;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 @CrossOrigin("*")
 //@RequiredArgsConstructor
@@ -43,7 +36,6 @@ public class TaskController {
         this.taskMapper = taskMapper;
     }
 
-
     //@RequestMapping(method = RequestMethod.GET,value = "getTask") //=  @GetMapping
     @GetMapping
     public ResponseEntity<List<TaskDto>> getTasks() {
@@ -55,7 +47,7 @@ public class TaskController {
         // try {
         // return new ResponseEntity<>(taskMapper.mapToTaskDto(service.getTask(taskId)), HttpStatus.OK);
         //} catch (TaskNotFoundException e) {
-        // return new ResponseEntity<>(new TaskDto(0L, "No task with id =" + taskId, ""), HttpStatus.BAD_REQUEST);
+        // return new ResponseEntity<>(new TaskDto(0L, "No task with id =" + taskId, ""), HttpStatus.BAD_REQUESTw);
         //}
         return ResponseEntity.ok(taskMapper.mapToTaskDto(service.getTask(taskId)));
     }
@@ -71,6 +63,7 @@ public class TaskController {
         Task task = taskMapper.mapToTask(taskDto);
         Task saveTask = service.saveTask(task);
         return ResponseEntity.ok(taskMapper.mapToTaskDto(saveTask));
+
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
