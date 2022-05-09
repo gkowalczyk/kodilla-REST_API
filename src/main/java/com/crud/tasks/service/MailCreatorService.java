@@ -21,6 +21,7 @@ public class MailCreatorService {
         context.setVariable("message", message);
         context.setVariable("tasks_url","http://gkowalczyk.github.io");
         context.setVariable("button", "Visit website");
+        context.setVariable("final_info",adminConfig.getFinalInfo());
         context.setVariable("admin_name", adminConfig.getAdminName());
         return templateEngine.process("created-trello-card-mail", context);
     }
