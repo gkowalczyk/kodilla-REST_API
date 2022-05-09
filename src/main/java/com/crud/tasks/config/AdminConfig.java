@@ -14,4 +14,5 @@ public class AdminConfig {
     private String adminName;
     @Value("${final.info}")
     private String finalInfo;
+
 }
