@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("v1/trello/")
 @RequiredArgsConstructor
-
+//@ResponseBody
 @CrossOrigin("*")
 public class TrelloController { // testowanie implementacji
 
