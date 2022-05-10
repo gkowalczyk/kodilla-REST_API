@@ -28,6 +28,7 @@ public class MailCreatorService {
         context.setVariable("final_info", adminConfig.getFinalInfo());
         context.setVariable("admin_name", adminConfig.getAdminName());
         context.setVariable("show_button", false);
+        context.setVariable("is_friend",true);
         context.setVariable("company_details",
                 companyDet.getCompanyName() + "," +
                         companyDet.getCompanyGoal() + "," +
