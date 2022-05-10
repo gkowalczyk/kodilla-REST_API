@@ -25,7 +25,7 @@ public class SimpleEmailServiceWithShedule {
         log.info("Starting email preparation....");
 
         try {
-          javaMailSender.send(createMimeMessage(mail));
+            javaMailSender.send(createMimeMessage(mail));
             log.info("Email has been sent");
         } catch (MailException e) {
             log.error("Failed to process email sending: " + e.getMessage(), e);
@@ -38,8 +38,7 @@ public class SimpleEmailServiceWithShedule {
             messageHelper.setTo(mail.getMail());
             messageHelper.setSubject(mail.getSubject());
             messageHelper.setText(mailCreatorWithShedule.buildTrelloCardEmail(mail.getMessage()), true);
+
         };
     }
 }
-
-
