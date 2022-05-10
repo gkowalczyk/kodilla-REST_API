@@ -4,7 +4,6 @@ import com.crud.tasks.config.AdminConfig;
 import com.crud.tasks.config.CompanyDet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class MailCreatorService {
+public class MailCreatorWithShedule {
 
     @Autowired
     @Qualifier("templateEngine")
@@ -35,8 +34,6 @@ public class MailCreatorService {
         context.setVariable("message", message);
         context.setVariable("tasks_url", "http://gkowalczyk.github.io");
         context.setVariable("button", "Visit website");
-        //context.setVariable("final_info", adminConfig.getFinalInfo());
-        //context.setVariable("admin_name", adminConfig.getAdminName());
         context.setVariable("admin_config", adminConfig); //obiekt do widoku
         context.setVariable("show_button", false);
         context.setVariable("is_friend",true);
@@ -47,7 +44,4 @@ public class MailCreatorService {
                         companyDet.getCompanyPhone());
         return templateEngine.process("created-trello-card-mail", context);
     }
-
 }
-
-
