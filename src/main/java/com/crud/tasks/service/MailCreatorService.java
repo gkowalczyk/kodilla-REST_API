@@ -25,8 +25,9 @@ public class MailCreatorService {
         context.setVariable("message", message);
         context.setVariable("tasks_url", "http://gkowalczyk.github.io");
         context.setVariable("button", "Visit website");
-        context.setVariable("final_info", adminConfig.getFinalInfo());
-        context.setVariable("admin_name", adminConfig.getAdminName());
+        //context.setVariable("final_info", adminConfig.getFinalInfo());
+        //context.setVariable("admin_name", adminConfig.getAdminName());
+        context.setVariable("admin_config", adminConfig); //obiekt do widoku
         context.setVariable("show_button", false);
         context.setVariable("is_friend",true);
         context.setVariable("company_details",
