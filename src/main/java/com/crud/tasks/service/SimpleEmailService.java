@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
 
-
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -67,7 +66,7 @@ public class SimpleEmailService {
         if (mail.getToCc() != null && !mail.getToCc().isEmpty()) {
             mailMessage.setCc(mail.getToCc());
         }
-            return mailMessage;
-        }
+        return mailMessage;
     }
+}
 
