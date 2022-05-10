@@ -22,8 +22,8 @@ public class EmailScheduler {
     @Autowired
     private final AdminConfig adminConfig;
 
-    @Scheduled(fixedDelay = 10000)
-    @Scheduled(cron = "0 0 23 * * *")
+    //@Scheduled(fixedDelay = 10000)
+    //@Scheduled(cron = "0 0 23 * * *")
     public void sendInformationEmail() {
         long size = taskRepository.count();
 
