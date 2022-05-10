@@ -113,7 +113,14 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Best Regards <br> <span th:text="${final_info}"></span> </p>
+                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+                                            Application functionality:
+                                        </p>
+                                        <ul th:each= "function : ${application_functionality}">
+                                            <li th:text="${function}"></li>
+
+                                        </ul>
+                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Best Regards <br> <span th:text="${admin_config.getFinalInfo()}"></span> </p>
                                     </td>
                                 </tr>
                             </table>
