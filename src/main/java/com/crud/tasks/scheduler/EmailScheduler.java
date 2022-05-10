@@ -18,7 +18,7 @@ public class EmailScheduler {
 
     private static final String SUBJECT = "Tasks: Once a day email";
     //private final SimpleEmailService simpleEmailService;
-    private SimpleEmailServiceWithShedule simpleEmailService;
+    private SimpleEmailServiceWithShedule simpleEmailServiceWithShedule;
     private final TaskRepository taskRepository;
     private final AdminConfig adminConfig;
     private final TrelloClient trelloClient;
@@ -31,7 +31,7 @@ public class EmailScheduler {
 
        String message = " message" +((size > 1L)? "tasks": "task");
        Mail mail = new Mail(adminConfig.getAdminMail(), SUBJECT, message,"");
-       simpleEmailService.send(mail);
+       simpleEmailServiceWithShedule.send(mail);
     }
 }
 
