@@ -18,7 +18,7 @@ public class TrelloService {
 
     private final TrelloClient trelloClient;
     //private final SimpleEmailService emailService;
-    private final SimpleEmailServiceWithShedule emailService;
+    private final SimpleEmailServiceWithShedule simpleEmailServiceWithShedule;
     private static final String SUBJECT = "Tasks: New trello card";
     private final AdminConfig adminConfig;
 
@@ -28,7 +28,7 @@ public class TrelloService {
 
     public CreatedTrelloCardDto createdTrelloCard(final TrelloCardDto trelloCardDto) {
         CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
-        ofNullable(newCard).ifPresent(cards-> emailService.send(
+        ofNullable(newCard).ifPresent(cards-> simpleEmailServiceWithShedule.send(
                        new Mail(
                 adminConfig.getAdminMail(), //z klasy Mail
                 SUBJECT,
