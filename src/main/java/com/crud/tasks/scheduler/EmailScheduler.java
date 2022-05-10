@@ -5,6 +5,7 @@ import com.crud.tasks.controller.TrelloController;
 import com.crud.tasks.domain.Mail;
 import com.crud.tasks.repository.TaskRepository;
 import com.crud.tasks.service.SimpleEmailService;
+import com.crud.tasks.service.SimpleEmailServiceWithShedule;
 import com.crud.tasks.service.TrelloService;
 import com.crud.tasks.trello.client.TrelloClient;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,8 @@ import org.springframework.stereotype.Component;
 public class EmailScheduler {
 
     private static final String SUBJECT = "Tasks: Once a day email";
-    private final SimpleEmailService simpleEmailService;
+    //private final SimpleEmailService simpleEmailService;
+    private SimpleEmailServiceWithShedule simpleEmailService;
     private final TaskRepository taskRepository;
     private final AdminConfig adminConfig;
     private final TrelloClient trelloClient;
