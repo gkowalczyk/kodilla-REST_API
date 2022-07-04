@@ -26,7 +26,7 @@ Restowe API napisane w Springu z wykorzystaniem następujących technologii:
 ## 3.Opis funkcjonalności:
 
 - Aplikacja dostępna na serwerze Heroku - https://gkowalczyk.github.io
-- Aplikacja jest połączona z zewnętrznym API Trello - https://trello.com/pl
+- Aplikacja jest połączona z zewnętrznym API Trello - https://trello.com/pl ( dodawanie/edycja/usuwanie zadań na tablicy Kanban) 
 
 
 
